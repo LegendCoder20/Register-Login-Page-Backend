@@ -7,15 +7,11 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-const url = "mongodb://0.0.0.0:27017";
-// const client = new MongoClient(url);
-const client = new MongoClient(
-  url,
-  {useUnifiedTopology: true},
-  {useNewUrlParser: true},
-  {connectTimeoutMS: 30000},
-  {keepAlive: 1}
-);
+// const url = "mongodb://0.0.0.0:27017";
+const url =
+  "mongodb+srv://legend:fGqt035Av7QWqotI@cluster0.v1fg5uc.mongodb.net/?authSource=Cluster0&authMechanism=SCRAM-SHA-1";
+const client = new MongoClient(url);
+
 const db = client.db("myCrudDatabase");
 const coll = db.collection("userData");
 
