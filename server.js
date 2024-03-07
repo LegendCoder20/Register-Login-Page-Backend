@@ -8,7 +8,14 @@ app.use(express.json());
 
 // MongoDB Connection
 const url = "mongodb://0.0.0.0:27017";
-const client = new MongoClient(url);
+// const client = new MongoClient(url);
+const client = new MongoClient(
+  url,
+  {useUnifiedTopology: true},
+  {useNewUrlParser: true},
+  {connectTimeoutMS: 30000},
+  {keepAlive: 1}
+);
 const db = client.db("myCrudDatabase");
 const coll = db.collection("userData");
 
