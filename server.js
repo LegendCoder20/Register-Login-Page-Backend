@@ -10,7 +10,7 @@ app.use(express.json());
 // const url = "mongodb://0.0.0.0:27017";
 const url =
   "mongodb+srv://legend:fGqt035Av7QWqotI@cluster0.v1fg5uc.mongodb.net/?authSource=Cluster0&authMechanism=SCRAM-SHA-1";
-const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: false });
 
 const db = client.db("myCrudDatabase");
 const coll = db.collection("userData");
