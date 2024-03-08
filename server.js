@@ -15,28 +15,25 @@ const client = new MongoClient(url);
 const db = client.db("myCrudDatabase");
 const coll = db.collection("userData");
 
-app.post(`/register/:fname`, (req, res) => {
+app.post("/register/:fname", (req, res) => {
   const fname = req.params.fname;
   const record = {
     _id: req.body.uname,
-    fname: fname, // Because I already took it from params
+    fname: fname,
     lname: req.body.lname,
     city: req.body.city,
     state: req.body.state,
     pass: req.body.password,
     cpass: req.body.cpassword,
   };
+
   coll
     .insertOne(record)
     .then((result) => {
-      res
-        .status(200)
-        .send("Record Stored in Database Successfully from /register");
+      res.status(200).send("Record stored in database successfully");
     })
     .catch((err) => {
-      res
-        .status(500)
-        .send("Error Occured from backend of /register while post" + err);
+      res.status(500).send("Error occurred while storing record: " + err);
     });
 });
 
